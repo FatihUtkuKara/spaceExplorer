@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#181A20</color> <!-- Ana arka plan -->
+    <color name="colorPrimaryVariant">#222531</color> <!-- Kartlar ve kutular -->
+    <color name="colorOnPrimary">#FFFFFF</color> <!-- Beyaz yazı -->
+    <color name="colorSecondary">#FCD535</color> <!-- Sarı accent -->
+    <color name="colorOnSecondary">#181A20</color> <!-- Sarı üstü yazı için -->
+    <color name="colorSurface">#222531</color> <!-- Kart arka planı -->
+    <color name="colorOnSurface">#FFFFFF</color> <!-- Kart içi yazı -->
+    <color name="colorBackground">#181A20</color> <!-- Genel arka plan -->
+    <color name="colorOnBackground">#FFFFFF</color>
+    <color name="colorDivider">#23262F</color> <!-- İnce çizgiler -->
+    <color name="colorTextSecondary">#B2B5BE</color> <!-- Açık gri yazı -->
+</resources> 

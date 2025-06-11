@@ -99,7 +99,7 @@ public final class RocketDao_Impl implements RocketDao {
   }
 
   @Override
-  public Object insertRocket(final Rocket rocket, final Continuation<? super Unit> $completion) {
+  public Object insertRocket(final Rocket rocket, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -113,11 +113,11 @@ public final class RocketDao_Impl implements RocketDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteAllRockets(final Continuation<? super Unit> $completion) {
+  public Object deleteAllRockets(final Continuation<? super Unit> arg0) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -136,12 +136,11 @@ public final class RocketDao_Impl implements RocketDao {
           __preparedStmtOfDeleteAllRockets.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg0);
   }
 
   @Override
-  public Object getRocketById(final String rocketId,
-      final Continuation<? super Rocket> $completion) {
+  public Object getRocketById(final String rocketId, final Continuation<? super Rocket> arg1) {
     final String _sql = "SELECT * FROM rockets WHERE id = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -229,7 +228,7 @@ public final class RocketDao_Impl implements RocketDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @NonNull

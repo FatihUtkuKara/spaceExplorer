@@ -19,6 +19,7 @@ public final class SpaceLaunch {
     @org.jetbrains.annotations.Nullable()
     private final java.lang.String details = null;
     @com.google.gson.annotations.SerializedName(value = "links")
+    @androidx.room.Embedded()
     @org.jetbrains.annotations.Nullable()
     private final com.example.spaceexplorer.data.model.Links links = null;
     

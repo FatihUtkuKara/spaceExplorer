@@ -1,6 +1,23 @@
 com.example.spaceexplorer.ui
+color colorBackground
+color colorDivider
+color colorOnBackground
+color colorOnPrimary
+color colorOnSecondary
+color colorOnSurface
+color colorPrimary
+color colorPrimaryVariant
+color colorSecondary
+color colorSurface
+color colorTextSecondary
+drawable cursor_color
+drawable search_background
 id action_launches_to_details
 id articleButton
+id chipAll
+id chipFailed
+id chipPending
+id chipSuccess
 id errorText
 id launchDateText
 id launchDetailsFragment
@@ -14,7 +31,10 @@ id progressBar
 id rocketCard
 id rocketDescriptionText
 id rocketNameText
+id searchEditText
+id searchInputLayout
 id statusCard
+id statusChipGroup
 id statusIcon
 id statusLabel
 id statusText
@@ -26,3 +46,5 @@ layout fragment_launch_details
 layout fragment_launches
 layout item_launch
 navigation nav_graph
+style Theme_SpaceExplorer
+style Widget_SpaceExplorer_Button

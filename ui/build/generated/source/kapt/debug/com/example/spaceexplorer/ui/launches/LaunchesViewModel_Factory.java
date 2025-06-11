@@ -1,6 +1,7 @@
 package com.example.spaceexplorer.ui.launches;
 
-import com.example.spaceexplorer.data.repository.SpaceXRepository;
+import com.example.spaceexplorer.data.usecase.GetLaunchesUseCase;
+import com.example.spaceexplorer.data.usecase.RefreshLaunchesUseCase;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
 import dagger.internal.QualifierMetadata;
@@ -22,22 +23,29 @@ import javax.inject.Provider;
     "KotlinInternalInJava"
 })
 public final class LaunchesViewModel_Factory implements Factory<LaunchesViewModel> {
-  private final Provider<SpaceXRepository> repositoryProvider;
+  private final Provider<GetLaunchesUseCase> getLaunchesUseCaseProvider;
 
-  public LaunchesViewModel_Factory(Provider<SpaceXRepository> repositoryProvider) {
-    this.repositoryProvider = repositoryProvider;
+  private final Provider<RefreshLaunchesUseCase> refreshLaunchesUseCaseProvider;
+
+  public LaunchesViewModel_Factory(Provider<GetLaunchesUseCase> getLaunchesUseCaseProvider,
+      Provider<RefreshLaunchesUseCase> refreshLaunchesUseCaseProvider) {
+    this.getLaunchesUseCaseProvider = getLaunchesUseCaseProvider;
+    this.refreshLaunchesUseCaseProvider = refreshLaunchesUseCaseProvider;
   }
 
   @Override
   public LaunchesViewModel get() {
-    return newInstance(repositoryProvider.get());
+    return newInstance(getLaunchesUseCaseProvider.get(), refreshLaunchesUseCaseProvider.get());
   }
 
-  public static LaunchesViewModel_Factory create(Provider<SpaceXRepository> repositoryProvider) {
-    return new LaunchesViewModel_Factory(repositoryProvider);
+  public static LaunchesViewModel_Factory create(
+      Provider<GetLaunchesUseCase> getLaunchesUseCaseProvider,
+      Provider<RefreshLaunchesUseCase> refreshLaunchesUseCaseProvider) {
+    return new LaunchesViewModel_Factory(getLaunchesUseCaseProvider, refreshLaunchesUseCaseProvider);
   }
 
-  public static LaunchesViewModel newInstance(SpaceXRepository repository) {
-    return new LaunchesViewModel(repository);
+  public static LaunchesViewModel newInstance(GetLaunchesUseCase getLaunchesUseCase,
+      RefreshLaunchesUseCase refreshLaunchesUseCase) {
+    return new LaunchesViewModel(getLaunchesUseCase, refreshLaunchesUseCase);
   }
 }

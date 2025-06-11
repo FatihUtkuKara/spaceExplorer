@@ -12,9 +12,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.core.widget.addTextChangedListener
 import com.example.spaceexplorer.ui.databinding.FragmentLaunchesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import com.google.android.material.textfield.TextInputEditText
 
 @AndroidEntryPoint
 class LaunchesFragment : Fragment() {
@@ -45,6 +47,7 @@ class LaunchesFragment : Fragment() {
         Log.d(TAG, "[Fragment] View created")
         setupRecyclerView()
         setupSwipeRefresh()
+        setupFilters()
         observeUiState()
     }
 
@@ -61,6 +64,31 @@ class LaunchesFragment : Fragment() {
         binding.swipeRefreshLayout.setOnRefreshListener {
             Log.d(TAG, "[Fragment] Swipe refresh triggered")
             viewModel.refreshLaunches()
+        }
+    }
+
+    private fun setupFilters() {
+        binding.searchEditText.addTextChangedListener { editable ->
+            viewModel.setSearchQuery(editable?.toString() ?: "")
+        }
+        
+        binding.searchEditText.setOnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                (view as? TextInputEditText)?.hint = ""
+            } else if ((view as? TextInputEditText)?.text?.isEmpty() == true) {
+                (view as? TextInputEditText)?.hint = "Search by mission name"
+            }
+        }
+
+        binding.statusChipGroup.setOnCheckedChangeListener { group, checkedId ->
+            val filter = when (checkedId) {
+                binding.chipAll.id -> StatusFilter.ALL
+                binding.chipSuccess.id -> StatusFilter.SUCCESSFUL
+                binding.chipFailed.id -> StatusFilter.FAILED
+                binding.chipPending.id -> StatusFilter.PENDING
+                else -> StatusFilter.ALL
+            }
+            viewModel.setStatusFilter(filter)
         }
     }
 

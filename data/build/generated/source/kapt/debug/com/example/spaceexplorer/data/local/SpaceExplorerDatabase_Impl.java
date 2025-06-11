@@ -33,13 +33,13 @@ public final class SpaceExplorerDatabase_Impl extends SpaceExplorerDatabase {
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(2) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(3) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS `launches` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `dateUtc` INTEGER NOT NULL, `rocketId` TEXT NOT NULL, `success` INTEGER, `details` TEXT, `links` TEXT, PRIMARY KEY(`id`))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `launches` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `dateUtc` INTEGER NOT NULL, `rocketId` TEXT NOT NULL, `success` INTEGER, `details` TEXT, `webcast` TEXT, `article` TEXT, `wikipedia` TEXT, PRIMARY KEY(`id`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS `rockets` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `active` INTEGER NOT NULL, `company` TEXT NOT NULL, `costPerLaunch` INTEGER NOT NULL, `successRatePct` INTEGER NOT NULL, `firstFlight` TEXT, `country` TEXT NOT NULL, `wikipedia` TEXT, PRIMARY KEY(`id`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5b3a4e30d1e3d3b8fcc85a3768e613bd')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'eab10fcf8090b64b720520a47d95a289')");
       }
 
       @Override
@@ -89,14 +89,16 @@ public final class SpaceExplorerDatabase_Impl extends SpaceExplorerDatabase {
       @NonNull
       public RoomOpenHelper.ValidationResult onValidateSchema(
           @NonNull final SupportSQLiteDatabase db) {
-        final HashMap<String, TableInfo.Column> _columnsLaunches = new HashMap<String, TableInfo.Column>(7);
+        final HashMap<String, TableInfo.Column> _columnsLaunches = new HashMap<String, TableInfo.Column>(9);
         _columnsLaunches.put("id", new TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsLaunches.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsLaunches.put("dateUtc", new TableInfo.Column("dateUtc", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsLaunches.put("rocketId", new TableInfo.Column("rocketId", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsLaunches.put("success", new TableInfo.Column("success", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsLaunches.put("details", new TableInfo.Column("details", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsLaunches.put("links", new TableInfo.Column("links", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsLaunches.put("webcast", new TableInfo.Column("webcast", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsLaunches.put("article", new TableInfo.Column("article", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsLaunches.put("wikipedia", new TableInfo.Column("wikipedia", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysLaunches = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesLaunches = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoLaunches = new TableInfo("launches", _columnsLaunches, _foreignKeysLaunches, _indicesLaunches);
@@ -128,7 +130,7 @@ public final class SpaceExplorerDatabase_Impl extends SpaceExplorerDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "5b3a4e30d1e3d3b8fcc85a3768e613bd", "8b0ffee731ea98cc6fdcc5946a64ecf3");
+    }, "eab10fcf8090b64b720520a47d95a289", "52e4d29a54bb501d5425d8a8b0e2cf9d");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;

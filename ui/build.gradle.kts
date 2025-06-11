@@ -39,8 +39,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
-    implementation(project(":domain"))
+    // implementation(project(":core")) // core modülüne olan bağımlılık kaldırıldı
+    // implementation(project(":domain")) // domain modülüne olan bağımlılık kaldırıldı
     implementation(project(":data"))
 
     // AndroidX

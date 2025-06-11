@@ -64,10 +64,8 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   @Override
   public List<DataBinderMapper> collectDependencies() {
-    ArrayList<DataBinderMapper> result = new ArrayList<DataBinderMapper>(3);
+    ArrayList<DataBinderMapper> result = new ArrayList<DataBinderMapper>(1);
     result.add(new androidx.databinding.library.baseAdapters.DataBinderMapperImpl());
-    result.add(new com.example.spaceexplorer.core.DataBinderMapperImpl());
-    result.add(new com.example.spaceexplorer.domain.DataBinderMapperImpl());
     return result;
   }
 

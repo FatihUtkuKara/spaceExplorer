@@ -1,5 +1,6 @@
 package com.example.spaceexplorer.data.model
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -16,12 +17,7 @@ data class SpaceLaunch(
     val rocketId: String,
     val success: Boolean?,
     val details: String?,
+    @Embedded
     @SerializedName("links")
     val links: Links?
 )
-
-data class Links(
-    val webcast: String?,
-    val article: String?,
-    val wikipedia: String?
-) 

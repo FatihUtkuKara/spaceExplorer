@@ -50,7 +50,7 @@ public final class LaunchDao_Impl implements LaunchDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `launches` (`id`,`name`,`dateUtc`,`rocketId`,`success`,`details`,`links`) VALUES (?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `launches` (`id`,`name`,`dateUtc`,`rocketId`,`success`,`details`,`webcast`,`article`,`wikipedia`) VALUES (?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -88,11 +88,27 @@ public final class LaunchDao_Impl implements LaunchDao {
         } else {
           statement.bindString(6, entity.getDetails());
         }
-        final String _tmp_2 = __converters.fromLinks(entity.getLinks());
-        if (_tmp_2 == null) {
-          statement.bindNull(7);
+        final Links _tmpLinks = entity.getLinks();
+        if (_tmpLinks != null) {
+          if (_tmpLinks.getWebcast() == null) {
+            statement.bindNull(7);
+          } else {
+            statement.bindString(7, _tmpLinks.getWebcast());
+          }
+          if (_tmpLinks.getArticle() == null) {
+            statement.bindNull(8);
+          } else {
+            statement.bindString(8, _tmpLinks.getArticle());
+          }
+          if (_tmpLinks.getWikipedia() == null) {
+            statement.bindNull(9);
+          } else {
+            statement.bindString(9, _tmpLinks.getWikipedia());
+          }
         } else {
-          statement.bindString(7, _tmp_2);
+          statement.bindNull(7);
+          statement.bindNull(8);
+          statement.bindNull(9);
         }
       }
     };
@@ -164,7 +180,9 @@ public final class LaunchDao_Impl implements LaunchDao {
           final int _cursorIndexOfRocketId = CursorUtil.getColumnIndexOrThrow(_cursor, "rocketId");
           final int _cursorIndexOfSuccess = CursorUtil.getColumnIndexOrThrow(_cursor, "success");
           final int _cursorIndexOfDetails = CursorUtil.getColumnIndexOrThrow(_cursor, "details");
-          final int _cursorIndexOfLinks = CursorUtil.getColumnIndexOrThrow(_cursor, "links");
+          final int _cursorIndexOfWebcast = CursorUtil.getColumnIndexOrThrow(_cursor, "webcast");
+          final int _cursorIndexOfArticle = CursorUtil.getColumnIndexOrThrow(_cursor, "article");
+          final int _cursorIndexOfWikipedia = CursorUtil.getColumnIndexOrThrow(_cursor, "wikipedia");
           final List<SpaceLaunch> _result = new ArrayList<SpaceLaunch>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final SpaceLaunch _item;
@@ -209,13 +227,29 @@ public final class LaunchDao_Impl implements LaunchDao {
               _tmpDetails = _cursor.getString(_cursorIndexOfDetails);
             }
             final Links _tmpLinks;
-            final String _tmp_2;
-            if (_cursor.isNull(_cursorIndexOfLinks)) {
-              _tmp_2 = null;
+            if (!(_cursor.isNull(_cursorIndexOfWebcast) && _cursor.isNull(_cursorIndexOfArticle) && _cursor.isNull(_cursorIndexOfWikipedia))) {
+              final String _tmpWebcast;
+              if (_cursor.isNull(_cursorIndexOfWebcast)) {
+                _tmpWebcast = null;
+              } else {
+                _tmpWebcast = _cursor.getString(_cursorIndexOfWebcast);
+              }
+              final String _tmpArticle;
+              if (_cursor.isNull(_cursorIndexOfArticle)) {
+                _tmpArticle = null;
+              } else {
+                _tmpArticle = _cursor.getString(_cursorIndexOfArticle);
+              }
+              final String _tmpWikipedia;
+              if (_cursor.isNull(_cursorIndexOfWikipedia)) {
+                _tmpWikipedia = null;
+              } else {
+                _tmpWikipedia = _cursor.getString(_cursorIndexOfWikipedia);
+              }
+              _tmpLinks = new Links(_tmpWebcast,_tmpArticle,_tmpWikipedia);
             } else {
-              _tmp_2 = _cursor.getString(_cursorIndexOfLinks);
+              _tmpLinks = null;
             }
-            _tmpLinks = __converters.toLinks(_tmp_2);
             _item = new SpaceLaunch(_tmpId,_tmpName,_tmpDateUtc,_tmpRocketId,_tmpSuccess,_tmpDetails,_tmpLinks);
             _result.add(_item);
           }
@@ -256,7 +290,9 @@ public final class LaunchDao_Impl implements LaunchDao {
           final int _cursorIndexOfRocketId = CursorUtil.getColumnIndexOrThrow(_cursor, "rocketId");
           final int _cursorIndexOfSuccess = CursorUtil.getColumnIndexOrThrow(_cursor, "success");
           final int _cursorIndexOfDetails = CursorUtil.getColumnIndexOrThrow(_cursor, "details");
-          final int _cursorIndexOfLinks = CursorUtil.getColumnIndexOrThrow(_cursor, "links");
+          final int _cursorIndexOfWebcast = CursorUtil.getColumnIndexOrThrow(_cursor, "webcast");
+          final int _cursorIndexOfArticle = CursorUtil.getColumnIndexOrThrow(_cursor, "article");
+          final int _cursorIndexOfWikipedia = CursorUtil.getColumnIndexOrThrow(_cursor, "wikipedia");
           final SpaceLaunch _result;
           if (_cursor.moveToFirst()) {
             final String _tmpId;
@@ -300,13 +336,29 @@ public final class LaunchDao_Impl implements LaunchDao {
               _tmpDetails = _cursor.getString(_cursorIndexOfDetails);
             }
             final Links _tmpLinks;
-            final String _tmp_2;
-            if (_cursor.isNull(_cursorIndexOfLinks)) {
-              _tmp_2 = null;
+            if (!(_cursor.isNull(_cursorIndexOfWebcast) && _cursor.isNull(_cursorIndexOfArticle) && _cursor.isNull(_cursorIndexOfWikipedia))) {
+              final String _tmpWebcast;
+              if (_cursor.isNull(_cursorIndexOfWebcast)) {
+                _tmpWebcast = null;
+              } else {
+                _tmpWebcast = _cursor.getString(_cursorIndexOfWebcast);
+              }
+              final String _tmpArticle;
+              if (_cursor.isNull(_cursorIndexOfArticle)) {
+                _tmpArticle = null;
+              } else {
+                _tmpArticle = _cursor.getString(_cursorIndexOfArticle);
+              }
+              final String _tmpWikipedia;
+              if (_cursor.isNull(_cursorIndexOfWikipedia)) {
+                _tmpWikipedia = null;
+              } else {
+                _tmpWikipedia = _cursor.getString(_cursorIndexOfWikipedia);
+              }
+              _tmpLinks = new Links(_tmpWebcast,_tmpArticle,_tmpWikipedia);
             } else {
-              _tmp_2 = _cursor.getString(_cursorIndexOfLinks);
+              _tmpLinks = null;
             }
-            _tmpLinks = __converters.toLinks(_tmp_2);
             _result = new SpaceLaunch(_tmpId,_tmpName,_tmpDateUtc,_tmpRocketId,_tmpSuccess,_tmpDetails,_tmpLinks);
           } else {
             _result = null;

@@ -81,14 +81,20 @@ class LaunchDetailsFragment : Fragment() {
             missionNameText.text = launch.name
             launchDateText.text = dateFormat.format(launch.dateUtc)
 
-            // Update launch status
-            statusText.text = if (launch.success == true) "Successful" else "Failed"
-            statusText.setTextColor(
-                if (launch.success == true) 
-                    resources.getColor(android.R.color.holo_green_dark, null)
-                else 
-                    resources.getColor(android.R.color.holo_red_dark, null)
-            )
+            when (launch.success) {
+                true -> {
+                    statusText.text = "Successful"
+                    statusText.setTextColor(resources.getColor(android.R.color.holo_green_dark, null))
+                }
+                false -> {
+                    statusText.text = "Failed"
+                    statusText.setTextColor(resources.getColor(android.R.color.holo_red_dark, null))
+                }
+                null -> {
+                    statusText.text = "Pending"
+                    statusText.setTextColor(resources.getColor(android.R.color.darker_gray, null))
+                }
+            }
 
             rocket?.let {
                 rocketNameText.text = it.name

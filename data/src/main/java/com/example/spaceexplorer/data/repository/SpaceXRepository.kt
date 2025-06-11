@@ -4,8 +4,8 @@ import android.util.Log
 import com.example.spaceexplorer.data.api.SpaceXApiService
 import com.example.spaceexplorer.data.local.LaunchDao
 import com.example.spaceexplorer.data.local.RocketDao
-import com.example.spaceexplorer.data.model.SpaceLaunch
 import com.example.spaceexplorer.data.model.Rocket
+import com.example.spaceexplorer.data.model.SpaceLaunch
 import kotlinx.coroutines.flow.Flow
 import java.net.UnknownHostException
 import javax.inject.Inject

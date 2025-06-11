@@ -1,7 +1,9 @@
 package com.example.spaceexplorer.ui.launches
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -54,6 +56,12 @@ class LaunchesAdapter(
                         null -> android.R.drawable.presence_invisible
                     }
                 )
+                val tintColor = when (launch.success) {
+                    true -> ContextCompat.getColor(root.context, android.R.color.holo_green_dark)
+                    false -> ContextCompat.getColor(root.context, android.R.color.holo_red_dark)
+                    null -> ContextCompat.getColor(root.context, android.R.color.darker_gray)
+                }
+                statusIcon.setColorFilter(tintColor)
             }
         }
     }
