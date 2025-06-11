@@ -1,5 +1,6 @@
 package com.example.spaceexplorer.ui.launches;
 
+import com.example.spaceexplorer.data.repository.SpaceXRepository;
 import com.example.spaceexplorer.data.usecase.GetLaunchesUseCase;
 import com.example.spaceexplorer.data.usecase.RefreshLaunchesUseCase;
 import dagger.internal.DaggerGenerated;
@@ -27,25 +28,30 @@ public final class LaunchesViewModel_Factory implements Factory<LaunchesViewMode
 
   private final Provider<RefreshLaunchesUseCase> refreshLaunchesUseCaseProvider;
 
+  private final Provider<SpaceXRepository> repositoryProvider;
+
   public LaunchesViewModel_Factory(Provider<GetLaunchesUseCase> getLaunchesUseCaseProvider,
-      Provider<RefreshLaunchesUseCase> refreshLaunchesUseCaseProvider) {
+      Provider<RefreshLaunchesUseCase> refreshLaunchesUseCaseProvider,
+      Provider<SpaceXRepository> repositoryProvider) {
     this.getLaunchesUseCaseProvider = getLaunchesUseCaseProvider;
     this.refreshLaunchesUseCaseProvider = refreshLaunchesUseCaseProvider;
+    this.repositoryProvider = repositoryProvider;
   }
 
   @Override
   public LaunchesViewModel get() {
-    return newInstance(getLaunchesUseCaseProvider.get(), refreshLaunchesUseCaseProvider.get());
+    return newInstance(getLaunchesUseCaseProvider.get(), refreshLaunchesUseCaseProvider.get(), repositoryProvider.get());
   }
 
   public static LaunchesViewModel_Factory create(
       Provider<GetLaunchesUseCase> getLaunchesUseCaseProvider,
-      Provider<RefreshLaunchesUseCase> refreshLaunchesUseCaseProvider) {
-    return new LaunchesViewModel_Factory(getLaunchesUseCaseProvider, refreshLaunchesUseCaseProvider);
+      Provider<RefreshLaunchesUseCase> refreshLaunchesUseCaseProvider,
+      Provider<SpaceXRepository> repositoryProvider) {
+    return new LaunchesViewModel_Factory(getLaunchesUseCaseProvider, refreshLaunchesUseCaseProvider, repositoryProvider);
   }
 
   public static LaunchesViewModel newInstance(GetLaunchesUseCase getLaunchesUseCase,
-      RefreshLaunchesUseCase refreshLaunchesUseCase) {
-    return new LaunchesViewModel(getLaunchesUseCase, refreshLaunchesUseCase);
+      RefreshLaunchesUseCase refreshLaunchesUseCase, SpaceXRepository repository) {
+    return new LaunchesViewModel(getLaunchesUseCase, refreshLaunchesUseCase, repository);
   }
 }

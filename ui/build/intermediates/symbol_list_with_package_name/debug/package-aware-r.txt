@@ -18,7 +18,11 @@ id chipAll
 id chipFailed
 id chipPending
 id chipSuccess
+id errorContainer
+id errorIcon
+id errorMessage
 id errorText
+id errorTitle
 id launchDateText
 id launchDetailsFragment
 id launchesFragment
@@ -28,6 +32,7 @@ id missionNameText
 id nav_graph
 id nav_host_fragment
 id progressBar
+id retryButton
 id rocketCard
 id rocketDescriptionText
 id rocketNameText

@@ -11,12 +11,20 @@
     <color name="colorSecondary">#FCD535</color>
     <color name="colorSurface">#222531</color>
     <color name="colorTextSecondary">#B2B5BE</color>
-    <style name="Theme.SpaceExplorer" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.SpaceExplorer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        
         <item name="colorSecondary">@color/colorSecondary</item>
         <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        
         <item name="colorSurface">@color/colorSurface</item>
         <item name="colorOnSurface">@color/colorOnSurface</item>
         <item name="android:windowBackground">@color/colorBackground</item>

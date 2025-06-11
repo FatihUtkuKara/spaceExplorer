@@ -12,5 +12,30 @@
         <item name="android:statusBarColor">#222531</item>
     </style>
 
-    <style name="Theme.SpaceExplorer" parent="Base.Theme.SpaceExplorer" />
+    <style name="Theme.SpaceExplorer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <!-- Surface colors -->
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:textColorPrimary">@color/colorOnPrimary</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
+        <item name="android:buttonStyle">@style/Widget.SpaceExplorer.Button</item>
+    </style>
+
+    <style name="Widget.SpaceExplorer.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorSecondary</item>
+        <item name="android:textColor">@color/colorOnSecondary</item>
+    </style>
 </resources>

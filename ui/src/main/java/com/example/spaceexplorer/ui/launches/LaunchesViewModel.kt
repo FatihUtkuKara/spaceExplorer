@@ -1,22 +1,28 @@
 package com.example.spaceexplorer.ui.launches
 
+import ErrorAction
+import android.net.http.HttpException
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.spaceexplorer.data.model.Rocket
 import com.example.spaceexplorer.data.model.SpaceLaunch
 import com.example.spaceexplorer.data.usecase.GetLaunchesUseCase
 import com.example.spaceexplorer.data.usecase.RefreshLaunchesUseCase
+import com.example.spaceexplorer.data.repository.SpaceXRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 @HiltViewModel
 class LaunchesViewModel @Inject constructor(
     private val getLaunchesUseCase: GetLaunchesUseCase,
-    private val refreshLaunchesUseCase: RefreshLaunchesUseCase
+    private val refreshLaunchesUseCase: RefreshLaunchesUseCase,
+    private val repository: SpaceXRepository
 ) : ViewModel() {
 
     private val TAG = "SpaceExplorer"
@@ -43,7 +49,37 @@ class LaunchesViewModel @Inject constructor(
             getLaunchesUseCase()
                 .catch { e ->
                     Log.e(TAG, "[ViewModel] Error loading launches", e)
-                    _uiState.value = LaunchesUiState.Error(e.message ?: "Unknown error occurred")
+                    val (errorType, title, message, icon) = when (e) {
+                        is UnknownHostException -> ErrorInfo(
+                            ErrorType.NETWORK_ERROR,
+                            "No Internet Connection",
+                            "Please check your internet connection and try again",
+                            android.R.drawable.ic_menu_help
+                        )
+                        is HttpException -> ErrorInfo(
+                            ErrorType.API_ERROR,
+                            "Server Error",
+                            "Unable to fetch data from server. Please try again later.",
+                            android.R.drawable.ic_dialog_alert
+                        )
+                        else -> ErrorInfo(
+                            ErrorType.UNKNOWN_ERROR,
+                            "Something Went Wrong",
+                            "An unexpected error occurred. Please try again.",
+                            android.R.drawable.ic_dialog_alert
+                        )
+                    }
+                    _uiState.value = LaunchesUiState.Error(
+                        title = title,
+                        message = message,
+                        errorType = errorType,
+                        icon = icon,
+                        action = ErrorAction(
+                            buttonText = "Retry",
+                            action = { loadLaunches() }
+                        ),
+                        retryAction = { loadLaunches() }
+                    )
                 }
                 .collect { launches ->
                     Log.d(TAG, "[ViewModel] Received ${launches.size} launches from database")
@@ -62,7 +98,38 @@ class LaunchesViewModel @Inject constructor(
                 loadLaunches()
             } catch (e: Exception) {
                 Log.e(TAG, "[ViewModel] Error refreshing launches", e)
-                _uiState.value = LaunchesUiState.Error(e.message ?: "Unknown error occurred")
+                val (errorType, title, message, icon) = when (e) {
+                    is UnknownHostException -> ErrorInfo(
+                        ErrorType.NETWORK_ERROR,
+                        "No Internet Connection",
+                        "Please check your internet connection and try again",
+                        android.R.drawable.ic_menu_help
+                    )
+                    is HttpException -> ErrorInfo(
+                        ErrorType.API_ERROR,
+                        "Server Error",
+                        "Unable to fetch data from server. Please try again later.",
+                        android.R.drawable.ic_dialog_alert
+                    )
+                    else -> ErrorInfo(
+                        ErrorType.UNKNOWN_ERROR,
+                        "Something Went Wrong",
+                        "An unexpected error occurred. Please try again.",
+                        android.R.drawable.ic_dialog_alert
+                    )
+                }
+                
+                _uiState.value = LaunchesUiState.Error(
+                    title = title,
+                    message = message,
+                    errorType = errorType,
+                    icon = icon,
+                    action = ErrorAction(
+                        buttonText = "Retry",
+                        action = { refreshLaunches() }
+                    ),
+                    retryAction = { refreshLaunches() }
+                )
                 loadLaunches()
             }
         }
@@ -106,12 +173,25 @@ class LaunchesViewModel @Inject constructor(
         Log.d(TAG, "[ViewModel] Filtered to ${filtered.size} launches")
         _uiState.value = LaunchesUiState.Success(filtered)
     }
+
+    suspend fun getRocketById(rocketId: String): Rocket? {
+        return repository.getRocketById(rocketId)
+    }
 }
 
 sealed class LaunchesUiState {
     data object Loading : LaunchesUiState()
     data class Success(val launches: List<SpaceLaunch>) : LaunchesUiState()
-    data class Error(val message: String) : LaunchesUiState()
-} 
+    data class Error(val title: String, val message: String, val errorType: ErrorType, val icon: Int, val action: ErrorAction, val retryAction: () -> Unit) : LaunchesUiState()
+}
 
-enum class StatusFilter { ALL, SUCCESSFUL, FAILED, PENDING } 
+enum class StatusFilter { ALL, SUCCESSFUL, FAILED, PENDING }
+
+enum class ErrorType { NETWORK_ERROR, API_ERROR, UNKNOWN_ERROR }
+
+private data class ErrorInfo(
+    val type: ErrorType,
+    val title: String,
+    val message: String,
+    val icon: Int
+) 

@@ -4,11 +4,14 @@ package com.example.spaceexplorer.ui.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.Group;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
@@ -39,13 +42,28 @@ public final class FragmentLaunchesBinding implements ViewBinding {
   public final Chip chipSuccess;
 
   @NonNull
+  public final Group errorContainer;
+
+  @NonNull
+  public final ImageView errorIcon;
+
+  @NonNull
+  public final TextView errorMessage;
+
+  @NonNull
   public final TextView errorText;
+
+  @NonNull
+  public final TextView errorTitle;
 
   @NonNull
   public final RecyclerView launchesRecyclerView;
 
   @NonNull
   public final ProgressBar progressBar;
+
+  @NonNull
+  public final Button retryButton;
 
   @NonNull
   public final TextInputEditText searchEditText;
@@ -61,8 +79,10 @@ public final class FragmentLaunchesBinding implements ViewBinding {
 
   private FragmentLaunchesBinding(@NonNull ConstraintLayout rootView, @NonNull Chip chipAll,
       @NonNull Chip chipFailed, @NonNull Chip chipPending, @NonNull Chip chipSuccess,
-      @NonNull TextView errorText, @NonNull RecyclerView launchesRecyclerView,
-      @NonNull ProgressBar progressBar, @NonNull TextInputEditText searchEditText,
+      @NonNull Group errorContainer, @NonNull ImageView errorIcon, @NonNull TextView errorMessage,
+      @NonNull TextView errorText, @NonNull TextView errorTitle,
+      @NonNull RecyclerView launchesRecyclerView, @NonNull ProgressBar progressBar,
+      @NonNull Button retryButton, @NonNull TextInputEditText searchEditText,
       @NonNull TextInputLayout searchInputLayout, @NonNull ChipGroup statusChipGroup,
       @NonNull SwipeRefreshLayout swipeRefreshLayout) {
     this.rootView = rootView;
@@ -70,9 +90,14 @@ public final class FragmentLaunchesBinding implements ViewBinding {
     this.chipFailed = chipFailed;
     this.chipPending = chipPending;
     this.chipSuccess = chipSuccess;
+    this.errorContainer = errorContainer;
+    this.errorIcon = errorIcon;
+    this.errorMessage = errorMessage;
     this.errorText = errorText;
+    this.errorTitle = errorTitle;
     this.launchesRecyclerView = launchesRecyclerView;
     this.progressBar = progressBar;
+    this.retryButton = retryButton;
     this.searchEditText = searchEditText;
     this.searchInputLayout = searchInputLayout;
     this.statusChipGroup = statusChipGroup;
@@ -130,9 +155,33 @@ public final class FragmentLaunchesBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.errorContainer;
+      Group errorContainer = ViewBindings.findChildViewById(rootView, id);
+      if (errorContainer == null) {
+        break missingId;
+      }
+
+      id = R.id.errorIcon;
+      ImageView errorIcon = ViewBindings.findChildViewById(rootView, id);
+      if (errorIcon == null) {
+        break missingId;
+      }
+
+      id = R.id.errorMessage;
+      TextView errorMessage = ViewBindings.findChildViewById(rootView, id);
+      if (errorMessage == null) {
+        break missingId;
+      }
+
       id = R.id.errorText;
       TextView errorText = ViewBindings.findChildViewById(rootView, id);
       if (errorText == null) {
+        break missingId;
+      }
+
+      id = R.id.errorTitle;
+      TextView errorTitle = ViewBindings.findChildViewById(rootView, id);
+      if (errorTitle == null) {
         break missingId;
       }
 
@@ -145,6 +194,12 @@ public final class FragmentLaunchesBinding implements ViewBinding {
       id = R.id.progressBar;
       ProgressBar progressBar = ViewBindings.findChildViewById(rootView, id);
       if (progressBar == null) {
+        break missingId;
+      }
+
+      id = R.id.retryButton;
+      Button retryButton = ViewBindings.findChildViewById(rootView, id);
+      if (retryButton == null) {
         break missingId;
       }
 
@@ -173,8 +228,9 @@ public final class FragmentLaunchesBinding implements ViewBinding {
       }
 
       return new FragmentLaunchesBinding((ConstraintLayout) rootView, chipAll, chipFailed,
-          chipPending, chipSuccess, errorText, launchesRecyclerView, progressBar, searchEditText,
-          searchInputLayout, statusChipGroup, swipeRefreshLayout);
+          chipPending, chipSuccess, errorContainer, errorIcon, errorMessage, errorText, errorTitle,
+          launchesRecyclerView, progressBar, retryButton, searchEditText, searchInputLayout,
+          statusChipGroup, swipeRefreshLayout);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

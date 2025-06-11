@@ -24,11 +24,23 @@ class LaunchesFragment : Fragment() {
     private var _binding: FragmentLaunchesBinding? = null
     private val binding get() = _binding!!
     private val viewModel: LaunchesViewModel by viewModels()
-    private val adapter = LaunchesAdapter { launch ->
-        findNavController().navigate(
-            LaunchesFragmentDirections.actionLaunchesToDetails(launch.id)
-        )
-    }
+    private val adapter = LaunchesAdapter(
+        onLaunchClick = { launch ->
+            findNavController().navigate(
+                LaunchesFragmentDirections.actionLaunchesToDetails(launch.id)
+            )
+        },
+        onRocketIdRequest = { rocketId, callback ->
+            viewLifecycleOwner.lifecycleScope.launch {
+                try {
+                    val rocket = viewModel.getRocketById(rocketId)
+                    callback(rocket?.name ?: rocketId)
+                } catch (e: Exception) {
+                    callback(rocketId)
+                }
+            }
+        }
+    )
 
     private val TAG = "SpaceExplorer"
 
@@ -101,24 +113,33 @@ class LaunchesFragment : Fragment() {
                     when (state) {
                         is LaunchesUiState.Loading -> {
                             binding.progressBar.visibility = View.VISIBLE
-                            binding.errorText.visibility = View.GONE
+                            binding.errorContainer.visibility = View.GONE
                             binding.launchesRecyclerView.visibility = View.GONE
                             binding.swipeRefreshLayout.isRefreshing = false
+                            binding.statusChipGroup.isEnabled = false
                         }
                         is LaunchesUiState.Success -> {
                             binding.progressBar.visibility = View.GONE
-                            binding.errorText.visibility = View.GONE
+                            binding.errorContainer.visibility = View.GONE
                             binding.launchesRecyclerView.visibility = View.VISIBLE
                             binding.swipeRefreshLayout.isRefreshing = false
+                            binding.statusChipGroup.isEnabled = true
                             adapter.submitList(state.launches)
                             Log.d(TAG, "[Fragment] Updated adapter with ${state.launches.size} launches")
                         }
                         is LaunchesUiState.Error -> {
                             binding.progressBar.visibility = View.GONE
-                            binding.errorText.visibility = View.VISIBLE
+                            binding.errorContainer.visibility = View.VISIBLE
                             binding.launchesRecyclerView.visibility = View.GONE
                             binding.swipeRefreshLayout.isRefreshing = false
-                            binding.errorText.text = state.message
+                            binding.statusChipGroup.isEnabled = true
+                            
+                            binding.errorIcon.setImageResource(state.icon)
+                            binding.errorTitle.text = state.title
+                            binding.errorMessage.text = state.message
+                            binding.retryButton.text = state.action.buttonText
+                            binding.retryButton.setOnClickListener { state.action.action() }
+                            
                             Log.e(TAG, "[Fragment] Error state: ${state.message}")
                         }
                     }

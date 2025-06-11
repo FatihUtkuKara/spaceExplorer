@@ -13,7 +13,8 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class LaunchesAdapter(
-    private val onLaunchClick: (SpaceLaunch) -> Unit
+    private val onLaunchClick: (SpaceLaunch) -> Unit,
+    private val onRocketIdRequest: (String, (String) -> Unit) -> Unit
 ) : ListAdapter<SpaceLaunch, LaunchesAdapter.LaunchViewHolder>(LaunchDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaunchViewHolder {
@@ -47,7 +48,9 @@ class LaunchesAdapter(
         fun bind(launch: SpaceLaunch) {
             binding.apply {
                 missionNameText.text = launch.name
-                rocketNameText.text = launch.rocketId
+                onRocketIdRequest(launch.rocketId) { rocketName ->
+                    rocketNameText.text = rocketName
+                }
                 launchDateText.text = dateFormat.format(launch.dateUtc)
                 statusIcon.setImageResource(
                     when (launch.success) {
