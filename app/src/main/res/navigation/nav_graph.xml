@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/launchesFragment">
+
+    <fragment
+        android:id="@+id/launchesFragment"
+        android:name="com.example.spaceexplorer.ui.launches.LaunchesFragment"
+        android:label="SpaceX Launches">
+        <action
+            android:id="@+id/action_launches_to_details"
+            app:destination="@id/launchDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/launchDetailsFragment"
+        android:name="com.example.spaceexplorer.ui.details.LaunchDetailsFragment"
+        android:label="Launch Details">
+        <argument
+            android:name="launchId"
+            app:argType="string" />
+    </fragment>
+
+</navigation> 
