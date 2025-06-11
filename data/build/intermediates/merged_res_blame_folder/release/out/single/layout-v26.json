@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.example.spaceexplorer.data-merged_res-35:/layout-v26/mtrl_calendar_month.xml",
+        "source": "com.example.spaceexplorer.data-material-1.11.0-19:/layout-v26/mtrl_calendar_month.xml"
+    },
+    {
+        "merged": "com.example.spaceexplorer.data-merged_res-35:/layout-v26/abc_screen_toolbar.xml",
+        "source": "com.example.spaceexplorer.data-appcompat-1.6.1-14:/layout-v26/abc_screen_toolbar.xml"
+    }
+]

@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.2.2" type="incidents">
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for retrofit2-retrofit"
+            robot="true">
+            <fix-replace
+                description="Replace with squareup-retrofit = &quot;2.9.0&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="squareup-retrofit = &quot;2.9.0&quot;&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="212"
+                    endOffset="212"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with retrofit2-retrofit = { module = &quot;com.squareup.retrofit2:retrofit&quot;, version.ref = &quot;squareup-retrofit&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="retrofit2-retrofit = { module = &quot;com.squareup.retrofit2:retrofit&quot;, version.ref = &quot;squareup-retrofit&quot; }&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="1020"
+                    endOffset="1020"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.retrofit2.retrofit"
+                robot="true"
+                replacement="libs.retrofit2.retrofit">
+                <range
+                    file="${:data*projectDir}/build.gradle.kts"
+                    startOffset="954"
+                    endOffset="993"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="41"
+            column="21"
+            startOffset="955"
+            endLine="41"
+            endColumn="58"
+            endOffset="992"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for retrofit2-converter-gson"
+            robot="true">
+            <fix-replace
+                description="Replace with squareup-converterGson = &quot;2.9.0&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="squareup-converterGson = &quot;2.9.0&quot;&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="212"
+                    endOffset="212"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with retrofit2-converter-gson = { module = &quot;com.squareup.retrofit2:converter-gson&quot;, version.ref = &quot;squareup-converterGson&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="retrofit2-converter-gson = { module = &quot;com.squareup.retrofit2:converter-gson&quot;, version.ref = &quot;squareup-converterGson&quot; }&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="1020"
+                    endOffset="1020"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.retrofit2.converter.gson"
+                robot="true"
+                replacement="libs.retrofit2.converter.gson">
+                <range
+                    file="${:data*projectDir}/build.gradle.kts"
+                    startOffset="1014"
+                    endOffset="1059"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="42"
+            column="21"
+            startOffset="1015"
+            endLine="42"
+            endColumn="64"
+            endOffset="1058"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for okhttp3-logging-interceptor"
+            robot="true">
+            <fix-replace
+                description="Replace with squareup-loggingInterceptor = &quot;4.11.0&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="squareup-loggingInterceptor = &quot;4.11.0&quot;&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="212"
+                    endOffset="212"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with okhttp3-logging-interceptor = { module = &quot;com.squareup.okhttp3:logging-interceptor&quot;, version.ref = &quot;squareup-loggingInterceptor&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="okhttp3-logging-interceptor = { module = &quot;com.squareup.okhttp3:logging-interceptor&quot;, version.ref = &quot;squareup-loggingInterceptor&quot; }&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="1020"
+                    endOffset="1020"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.okhttp3.logging.interceptor"
+                robot="true"
+                replacement="libs.okhttp3.logging.interceptor">
+                <range
+                    file="${:data*projectDir}/build.gradle.kts"
+                    startOffset="1080"
+                    endOffset="1129"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="43"
+            column="21"
+            startOffset="1081"
+            endLine="43"
+            endColumn="68"
+            endOffset="1128"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for room-runtime"
+            robot="true">
+            <fix-replace
+                description="Replace with androidx-roomRuntime = &quot;2.6.1&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="androidx-roomRuntime = &quot;2.6.1&quot;&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="25"
+                    endOffset="25"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with room-runtime = { module = &quot;androidx.room:room-runtime&quot;, version.ref = &quot;androidx-roomRuntime&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="room-runtime = { module = &quot;androidx.room:room-runtime&quot;, version.ref = &quot;androidx-roomRuntime&quot; }&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="1020"
+                    endOffset="1020"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.room.runtime"
+                robot="true"
+                replacement="libs.room.runtime">
+                <range
+                    file="${:data*projectDir}/build.gradle.kts"
+                    startOffset="1163"
+                    endOffset="1197"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="46"
+            column="21"
+            startOffset="1164"
+            endLine="46"
+            endColumn="53"
+            endOffset="1196"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for room-ktx"
+            robot="true">
+            <fix-replace
+                description="Replace with androidx-roomKtx = &quot;2.6.1&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="androidx-roomKtx = &quot;2.6.1&quot;&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="25"
+                    endOffset="25"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with room-ktx = { module = &quot;androidx.room:room-ktx&quot;, version.ref = &quot;androidx-roomKtx&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="room-ktx = { module = &quot;androidx.room:room-ktx&quot;, version.ref = &quot;androidx-roomKtx&quot; }&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="1020"
+                    endOffset="1020"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.room.ktx"
+                robot="true"
+                replacement="libs.room.ktx">
+                <range
+                    file="${:data*projectDir}/build.gradle.kts"
+                    startOffset="1218"
+                    endOffset="1248"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="47"
+            column="21"
+            startOffset="1219"
+            endLine="47"
+            endColumn="49"
+            endOffset="1247"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for room-compiler"
+            robot="true">
+            <fix-replace
+                description="Replace with androidx-roomCompiler = &quot;2.6.1&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="androidx-roomCompiler = &quot;2.6.1&quot;&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="25"
+                    endOffset="25"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with room-compiler = { module = &quot;androidx.room:room-compiler&quot;, version.ref = &quot;androidx-roomCompiler&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="room-compiler = { module = &quot;androidx.room:room-compiler&quot;, version.ref = &quot;androidx-roomCompiler&quot; }&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="1020"
+                    endOffset="1020"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.room.compiler"
+                robot="true"
+                replacement="libs.room.compiler">
+                <range
+                    file="${:data*projectDir}/build.gradle.kts"
+                    startOffset="1259"
+                    endOffset="1294"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="48"
+            column="11"
+            startOffset="1260"
+            endLine="48"
+            endColumn="44"
+            endOffset="1293"/>
+    </incident>
+
+    <incident
+        id="KaptUsageInsteadOfKsp"
+        severity="warning"
+        message="This library supports using KSP instead of kapt, which greatly improves performance. Learn more: https://developer.android.com/studio/build/migrate-to-ksp">
+        <show-url
+            description="Learn about how to enable KSP and use the KSP processor for this dependency instead"
+            url="https://developer.android.com/studio/build/migrate-to-ksp"/>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="48"
+            column="5"
+            startOffset="1254"
+            endLine="48"
+            endColumn="46"
+            endOffset="1295"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for com-google-dagger-hilt-android2"
+            robot="true">
+            <fix-replace
+                description="Replace with com-google-dagger-hiltAndroid3 = &quot;2.48&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="com-google-dagger-hiltAndroid3 = &quot;2.48&quot;&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="25"
+                    endOffset="25"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with com-google-dagger-hilt-android2 = { module = &quot;com.google.dagger:hilt-android&quot;, version.ref = &quot;com-google-dagger-hiltAndroid3&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="com-google-dagger-hilt-android2 = { module = &quot;com.google.dagger:hilt-android&quot;, version.ref = &quot;com-google-dagger-hiltAndroid3&quot; }&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="317"
+                    endOffset="317"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.com.google.dagger.hilt.android2"
+                robot="true"
+                replacement="libs.com.google.dagger.hilt.android2">
+                <range
+                    file="${:data*projectDir}/build.gradle.kts"
+                    startOffset="1328"
+                    endOffset="1365"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="51"
+            column="21"
+            startOffset="1329"
+            endLine="51"
+            endColumn="56"
+            endOffset="1364"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for com-google-dagger-hilt-android-compiler2"
+            robot="true">
+            <fix-replace
+                description="Replace with com-google-dagger-hiltAndroidCompiler3 = &quot;2.48&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="com-google-dagger-hiltAndroidCompiler3 = &quot;2.48&quot;&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="25"
+                    endOffset="25"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with com-google-dagger-hilt-android-compiler2 = { module = &quot;com.google.dagger:hilt-android-compiler&quot;, version.ref = &quot;com-google-dagger-hiltAndroidCompiler3&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="com-google-dagger-hilt-android-compiler2 = { module = &quot;com.google.dagger:hilt-android-compiler&quot;, version.ref = &quot;com-google-dagger-hiltAndroidCompiler3&quot; }&#xA;">
+                <range
+                    file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                    startOffset="317"
+                    endOffset="317"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.com.google.dagger.hilt.android.compiler2"
+                robot="true"
+                replacement="libs.com.google.dagger.hilt.android.compiler2">
+                <range
+                    file="${:data*projectDir}/build.gradle.kts"
+                    startOffset="1376"
+                    endOffset="1422"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="52"
+            column="11"
+            startOffset="1377"
+            endLine="52"
+            endColumn="55"
+            endOffset="1421"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use the existing version catalog reference (`libs.junit`) instead">
+        <fix-replace
+            description="Replace with existing version catalog reference `junit`"
+            robot="true"
+            independent="true"
+            replacement="libs.junit">
+            <range
+                file="${:data*projectDir}/build.gradle.kts"
+                startOffset="1463"
+                endOffset="1483"/>
+        </fix-replace>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="55"
+            column="25"
+            startOffset="1464"
+            endLine="55"
+            endColumn="43"
+            endOffset="1482"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (androidx.test.ext:junit is already available as `androidx-junit`, but using version 1.2.1 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for androidx-test-ext-junit-v115-x2"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with androidx-test-ext-junit4 = &quot;1.1.5&quot;..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="androidx-test-ext-junit4 = &quot;1.1.5&quot;&#xA;">
+                    <range
+                        file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                        startOffset="25"
+                        endOffset="25"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with androidx-test-ext-junit-v115-x2 = { module = &quot;androidx.test.ext:junit&quot;, version.ref = &quot;androidx-test-ext-junit4&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="androidx-test-ext-junit-v115-x2 = { module = &quot;androidx.test.ext:junit&quot;, version.ref = &quot;androidx-test-ext-junit4&quot; }&#xA;">
+                    <range
+                        file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                        startOffset="317"
+                        endOffset="317"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.androidx.test.ext.junit.v115.x2"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.androidx.test.ext.junit.v115.x2">
+                    <range
+                        file="${:data*projectDir}/build.gradle.kts"
+                        startOffset="1515"
+                        endOffset="1546"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `androidx-junit` (version 1.2.1)"
+                replacement="libs.androidx.junit">
+                <range
+                    file="${:data*projectDir}/build.gradle.kts"
+                    startOffset="1515"
+                    endOffset="1546"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="56"
+            column="32"
+            startOffset="1516"
+            endLine="56"
+            endColumn="61"
+            endOffset="1545"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (androidx.test.espresso:espresso-core is already available as `androidx-espresso-core`, but using version 3.6.1 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for androidx-test-espresso-espresso-core-v351-x3"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with androidx-test-espresso-espressoCore4 = &quot;3.5.1&quot;..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="androidx-test-espresso-espressoCore4 = &quot;3.5.1&quot;&#xA;">
+                    <range
+                        file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                        startOffset="25"
+                        endOffset="25"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with androidx-test-espresso-espresso-core-v351-x3 = { module = &quot;androidx.test.espresso:espresso-core&quot;, version.ref = &quot;androidx-test-espresso-espressoCore4&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="androidx-test-espresso-espresso-core-v351-x3 = { module = &quot;androidx.test.espresso:espresso-core&quot;, version.ref = &quot;androidx-test-espresso-espressoCore4&quot; }&#xA;">
+                    <range
+                        file="$HOME/AndroidStudioProjects/SpaceExplorer2/spaceExplorer/gradle/libs.versions.toml"
+                        startOffset="317"
+                        endOffset="317"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.androidx.test.espresso.espresso.core.v351.x3"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.androidx.test.espresso.espresso.core.v351.x3">
+                    <range
+                        file="${:data*projectDir}/build.gradle.kts"
+                        startOffset="1578"
+                        endOffset="1622"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `androidx-espresso-core` (version 3.6.1)"
+                replacement="libs.androidx.espresso.core">
+                <range
+                    file="${:data*projectDir}/build.gradle.kts"
+                    startOffset="1578"
+                    endOffset="1622"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="57"
+            column="32"
+            startOffset="1579"
+            endLine="57"
+            endColumn="74"
+            endOffset="1621"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.squareup.retrofit2:retrofit than 2.9.0 is available: 2.11.0">
+        <fix-replace
+            description="Change to 2.11.0"
+            family="Update versions"
+            oldString="2.9.0"
+            replacement="2.11.0"/>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="41"
+            column="21"
+            startOffset="955"
+            endLine="41"
+            endColumn="58"
+            endOffset="992"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.squareup.retrofit2:converter-gson than 2.9.0 is available: 2.11.0">
+        <fix-replace
+            description="Change to 2.11.0"
+            family="Update versions"
+            oldString="2.9.0"
+            replacement="2.11.0"/>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="42"
+            column="21"
+            startOffset="1015"
+            endLine="42"
+            endColumn="64"
+            endOffset="1058"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.squareup.okhttp3:logging-interceptor than 4.11.0 is available: 4.12.0">
+        <fix-replace
+            description="Change to 4.12.0"
+            family="Update versions"
+            oldString="4.11.0"
+            replacement="4.12.0"/>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="43"
+            column="21"
+            startOffset="1081"
+            endLine="43"
+            endColumn="68"
+            endOffset="1128"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-runtime than 2.6.1 is available: 2.7.1">
+        <fix-replace
+            description="Change to 2.7.1"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.7.1"/>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="46"
+            column="21"
+            startOffset="1164"
+            endLine="46"
+            endColumn="53"
+            endOffset="1196"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-ktx than 2.6.1 is available: 2.7.1">
+        <fix-replace
+            description="Change to 2.7.1"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.7.1"/>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="47"
+            column="21"
+            startOffset="1219"
+            endLine="47"
+            endColumn="49"
+            endOffset="1247"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-compiler than 2.6.1 is available: 2.7.1">
+        <fix-replace
+            description="Change to 2.7.1"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.7.1"/>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="48"
+            column="11"
+            startOffset="1260"
+            endLine="48"
+            endColumn="44"
+            endOffset="1293"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.dagger:hilt-android than 2.48 is available: 2.54">
+        <fix-replace
+            description="Change to 2.54"
+            family="Update versions"
+            oldString="2.48"
+            replacement="2.54"/>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="51"
+            column="21"
+            startOffset="1329"
+            endLine="51"
+            endColumn="56"
+            endOffset="1364"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.dagger:hilt-android-compiler than 2.48 is available: 2.54">
+        <fix-replace
+            description="Change to 2.54"
+            family="Update versions"
+            oldString="2.48"
+            replacement="2.54"/>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="52"
+            column="11"
+            startOffset="1377"
+            endLine="52"
+            endColumn="55"
+            endOffset="1421"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.ext:junit than 1.1.5 is available: 1.2.1">
+        <fix-replace
+            description="Change to 1.2.1"
+            family="Update versions"
+            oldString="1.1.5"
+            replacement="1.2.1"/>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="56"
+            column="32"
+            startOffset="1516"
+            endLine="56"
+            endColumn="61"
+            endOffset="1545"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.5.1 is available: 3.6.1">
+        <fix-replace
+            description="Change to 3.6.1"
+            family="Update versions"
+            oldString="3.5.1"
+            replacement="3.6.1"/>
+        <location
+            file="${:data*projectDir}/build.gradle.kts"
+            line="57"
+            column="32"
+            startOffset="1579"
+            endLine="57"
+            endColumn="74"
+            endOffset="1621"/>
+    </incident>
+
+</incidents>

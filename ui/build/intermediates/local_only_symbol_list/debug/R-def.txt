@@ -1,0 +1,29 @@
+R_DEF: Internal format may change without notice
+local
+id action_launches_to_details
+id articleButton
+id errorText
+id launchDateText
+id launchDetailsFragment
+id launchesFragment
+id launchesRecyclerView
+id linksCard
+id missionNameText
+id nav_graph
+id nav_host_fragment
+id progressBar
+id rocketCard
+id rocketDescriptionText
+id rocketNameText
+id statusCard
+id statusIcon
+id statusLabel
+id statusText
+id swipeRefreshLayout
+id toolbar
+id webcastButton
+layout activity_main
+layout fragment_launch_details
+layout fragment_launches
+layout item_launch
+navigation nav_graph
