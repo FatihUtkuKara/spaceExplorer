@@ -13,7 +13,7 @@ data class Rocket(
     val company: String,
     val costPerLaunch: Long,
     val successRatePct: Int,
-    val firstFlight: String,
+    val firstFlight: String?,
     val country: String,
     val wikipedia: String?
 ) 

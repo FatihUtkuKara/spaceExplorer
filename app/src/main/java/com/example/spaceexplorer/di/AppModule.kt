@@ -54,7 +54,9 @@ object AppModule {
             context,
             SpaceExplorerDatabase::class.java,
             "space_explorer_db"
-        ).build()
+        )
+        .fallbackToDestructiveMigration()
+        .build()
     }
 
     @Provides

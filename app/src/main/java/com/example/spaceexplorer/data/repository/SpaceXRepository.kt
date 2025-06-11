@@ -17,27 +17,27 @@ class SpaceXRepository @Inject constructor(
     private val launchDao: LaunchDao,
     private val rocketDao: RocketDao
 ) {
-    private val TAG = "SpaceExplorer"
+    private val TAG = "SpaceXRepository"
 
     fun getAllLaunches(): Flow<List<SpaceLaunch>> {
-        Log.d(TAG, "[Repository] Getting all launches from database")
+        Log.e(TAG, "Getting all launches from database")
         return launchDao.getAllLaunches()
     }
 
     suspend fun refreshLaunches() {
         try {
-            Log.d(TAG, "[Repository] Starting to refresh launches from API")
+            Log.e(TAG, "Starting to refresh launches from API")
             val launches = apiService.getLaunches()
-            Log.d(TAG, "[Repository] Received ${launches.size} launches from API")
+            Log.e(TAG, "Received ${launches.size} launches from API")
             
-            Log.d(TAG, "[Repository] Deleting all existing launches from database")
+            Log.e(TAG, "Deleting all existing launches from database")
             launchDao.deleteAllLaunches()
             
-            Log.d(TAG, "[Repository] Inserting new launches into database")
+            Log.e(TAG, "Inserting new launches into database")
             launchDao.insertLaunches(launches)
-            Log.d(TAG, "[Repository] Successfully refreshed launches")
+            Log.e(TAG, "Successfully refreshed launches")
         } catch (e: Exception) {
-            Log.e(TAG, "[Repository] Error refreshing launches", e)
+            Log.e(TAG, "Error refreshing launches", e)
             when (e) {
                 is UnknownHostException -> throw Exception("Please check your internet connection")
                 else -> throw Exception("An error occurred while loading data: ${e.message}")
@@ -46,29 +46,33 @@ class SpaceXRepository @Inject constructor(
     }
 
     suspend fun getLaunchById(launchId: String): SpaceLaunch? {
-        Log.d(TAG, "[Repository] Getting launch by ID: $launchId")
-        return launchDao.getLaunchById(launchId)
+        Log.e(TAG, "Getting launch by ID: $launchId")
+        val launch = launchDao.getLaunchById(launchId)
+        Log.e(TAG, "Launch from database: $launch")
+        return launch
     }
 
     suspend fun getRocketById(rocketId: String): Rocket? {
-        Log.d(TAG, "[Repository] Getting rocket by ID: $rocketId")
+        Log.e(TAG, "Getting rocket by ID: $rocketId")
         var rocket = rocketDao.getRocketById(rocketId)
+        Log.e(TAG, "Rocket from database: $rocket")
+        
         if (rocket == null) {
             try {
-                Log.d(TAG, "[Repository] Rocket not found in database, fetching from API")
+                Log.e(TAG, "Rocket not found in database, fetching from API")
                 rocket = apiService.getRocket(rocketId)
-                Log.d(TAG, "[Repository] Received rocket from API: ${rocket.name}")
+                Log.e(TAG, "Received rocket from API: $rocket")
                 rocketDao.insertRocket(rocket)
-                Log.d(TAG, "[Repository] Inserted rocket into database")
+                Log.e(TAG, "Inserted rocket into database")
             } catch (e: Exception) {
-                Log.e(TAG, "[Repository] Error fetching rocket from API", e)
+                Log.e(TAG, "Error fetching rocket from API", e)
                 when (e) {
                     is UnknownHostException -> throw Exception("Please check your internet connection")
                     else -> throw Exception("An error occurred while loading rocket information: ${e.message}")
                 }
             }
         } else {
-            Log.d(TAG, "[Repository] Found rocket in database: ${rocket.name}")
+            Log.e(TAG, "Found rocket in database: $rocket")
         }
         return rocket
     }
